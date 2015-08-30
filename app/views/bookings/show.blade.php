@@ -1,8 +1,7 @@
+<h3>Booking details</h3>
 
 <div class="col-sm-8">
     <dl class="dl-horizontal show">
-        <dt>Event name</dt>
-        <dd>{{{ $booking->leadership_event()->first()->name }}}</dd>
 
         <dt>First name</dt>
         <dd>{{ $booking->first }}</dd>

@@ -1,5 +1,5 @@
 
-<h3>New booking for {{{ $event->name }}}</h3>
+<h3>New booking</h3>
 
 {{ Form::open(array('route' => array('booking.store', $event->id))) }}
 

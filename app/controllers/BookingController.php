@@ -6,9 +6,9 @@ class BookingController extends BaseController {
 
     public function index($leadership_event_id)
     {
-        $this->layout->with('subtitle', 'booking list');
-
         $event = LeadershipEvent::find($leadership_event_id);
+
+        $this->layout->with('subtitle', $event->name);
 
         $this->layout->content = 
             View::make('bookings.index')
@@ -22,7 +22,7 @@ class BookingController extends BaseController {
 
         $booking = new Booking();
 
-        $this->layout->with('subtitle', 'add a new booking');
+        $this->layout->with('subtitle', $event->name);
 
         $this->layout->content =
             View::make('bookings.create')
@@ -59,9 +59,12 @@ class BookingController extends BaseController {
 
     public function show($leadership_event_id, $id)
     {
+        $event = LeadershipEvent::find($leadership_event_id);
+
         $booking = Booking::findOrFail($id);
 
-        $this->layout->with('subtitle', 'booking details');
+        $this->layout->with('subtitle', $event->name);
+
         $this->layout->content = 
             View::make('bookings.show')
                     ->with('booking', $booking);
@@ -70,9 +73,12 @@ class BookingController extends BaseController {
 
     public function edit($leadership_event_id, $id)
     {
+        $event = LeadershipEvent::find($leadership_event_id);
+
         $booking = Booking::findOrFail($id);
 
-        $this->layout->with('subtitle', 'change booking details');
+        $this->layout->with('subtitle', $event->name);
+        
         $this->layout->content = 
             View::make('bookings.edit')
                     ->with('booking', $booking);

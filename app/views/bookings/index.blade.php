@@ -1,7 +1,7 @@
 
 @if ($event)
 
-<h2>Bookings for {{{ $event->name }}}</h2>
+<h3>Bookings</h3>
 
 <div>
     {{ link_to_route('booking.create', 'Add a new booking', $parameters = array( 'leadership_event_id' => $event->id), array('class' => 'btn btn-primary')) }}
