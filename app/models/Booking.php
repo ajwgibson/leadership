@@ -22,8 +22,31 @@ class Booking extends Eloquent
         'last.max'          => "The last name may not be longer than :max characters.",
     );
 
+    public function getDates()
+    {
+        $dates = parent::getDates();
+        array_push($dates, 'created_at');
+        array_push($dates, 'registration_date');
+        return $dates;
+    }
+
     public function leadership_event()
     {
         return $this->belongsTo('LeadershipEvent', 'leadership_event_id');
+    }
+
+    public function scopeRegistered($query)
+    {
+        return $query->whereNotNull('registration_date');
+    }
+
+    public function name()
+    {
+        return $this->first . ' ' . $this->last;
+    }
+
+    public function is_registered()
+    {
+        return isset($this->registration_date);
     }
 }

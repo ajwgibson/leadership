@@ -22,6 +22,7 @@ class CreateBookingsTable extends Migration {
 			$table->string('role', 100)->nullable();
 			$table->string('email', 100)->nullable();
 			$table->string('contact_number', 100)->nullable();
+			$table->dateTime('registration_date')->nullable();
 
 			$table->integer('leadership_event_id')->unsigned();
 			

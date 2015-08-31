@@ -19,7 +19,10 @@
         <dd>{{ $booking->church }}</dd>
 
         <dt>Role</dt>
-        <dd>{{ $booking->roles }}</dd>
+        <dd>{{ $booking->role }}</dd>
+
+        <dt>Registration date/time</dt>
+        <dd>{{ HTML::long_date_time($booking->registration_date) }}</dd>
     </dl>
 </div>
 

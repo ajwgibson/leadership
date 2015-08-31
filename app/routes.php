@@ -26,6 +26,10 @@ Route::group(array('before' => 'auth.basic'), function()
         Route::get ('booking/edit/{booking}', array('as'=>'booking.edit',   'uses'=>'BookingController@edit'));
         Route::put ('booking/{booking}',      array('as'=>'booking.update', 'uses'=>'BookingController@update'));
         Route::delete('booking/{booking}',    array('as'=>'booking.destroy','uses'=>'BookingController@destroy'));
+
+        Route::get ('registration',           array('as'=>'registration',        'uses'=>'RegistrationController@index'));
+        Route::post('registration',           array('as'=>'registration.search', 'uses'=>'RegistrationController@search'));
+        Route::post('register/{booking}',     array('as'=>'register',            'uses'=>'RegistrationController@register'));
     });
 
 });

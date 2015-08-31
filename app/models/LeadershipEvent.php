@@ -32,4 +32,14 @@ class LeadershipEvent extends Eloquent
         return $this->hasMany('Booking');
     }
 
+    public function expected()
+    {
+        return $this->bookings()->count();
+    }
+
+    public function registered()
+    {
+        return $this->bookings()->registered()->count();
+    }
+
 }

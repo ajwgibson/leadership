@@ -15,6 +15,7 @@
             <th>Role</th>
             <th>Email address</th>
             <th>Contact number</th>
+            <th>Registered?</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
@@ -26,6 +27,7 @@
             <td>{{{ $booking->role }}}</td>
             <td>{{{ $booking->email }}}</td>
             <td>{{{ $booking->contact_number }}}</td>
+            <td>{{{ $booking->is_registered() ? 'Yes' : 'No' }}}</td>
             <td>
                 {{ link_to_route('booking.show', 'View details', 
                         $parameters = array('leadership_event_id' => $booking->leadership_event()->first()->id, 'id' => $booking->id), 
