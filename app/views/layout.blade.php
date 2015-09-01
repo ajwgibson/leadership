@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CCV Leadership Event registration">
+    <meta name="description" content="CCV Leadership Events">
 
     <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}">
 
-    <title>CCV Leadership Event registration</title>
+    <title>CCV Leadership Events</title>
 
     <link rel="stylesheet" href="{{ asset('packages/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('packages/bootstrap-datepicker.css') }}">
@@ -54,6 +54,7 @@
         <div class="container">
 
             <div class="page-header">
+                <img src="{{ asset('images/banner.png') }}" class="img-responsive" alt="CCV Leadership Events banner">
                 <h1>CCV Leadership Events 
                     @if ($subtitle) <span class="subtitle"><small>&raquo; {{ $subtitle }}</small></span> @endif</h1>
             </div>
