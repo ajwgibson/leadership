@@ -117,4 +117,24 @@ class BookingController extends BaseController {
         return Redirect::route('booking.index', array($leadership_event_id));
     }
 
+
+    public function register($leadership_event_id, $id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->registration_date = new Datetime();
+        $booking->save();
+        return Redirect::route('booking.show', array($leadership_event_id, $id))
+                ->with('info', 'Registered booking!');
+    }
+
+
+    public function unregister($leadership_event_id, $id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->registration_date = null;
+        $booking->save();
+        return Redirect::route('booking.show', array($leadership_event_id, $id))
+                ->with('info', 'Unregistered booking!');
+    }
+
 }

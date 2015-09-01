@@ -100,5 +100,5 @@ HTML::macro('long_date', function($date)
 
 HTML::macro('long_date_time', function($date)
 {
-    if ($date) return $date->timezone('Europe/London')->format('l, jS F Y, h:i:s A');
+    if ($date) return $date->timezone('Europe/London')->format('l, jS F Y, h:i A');
 });

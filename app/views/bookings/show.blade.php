@@ -28,12 +28,6 @@
 
 <div class="col-sm-4">
 
-    {{ Form::open(
-        array(
-            'method' => 'DELETE', 
-            'route' => array('booking.destroy', $booking->leadership_event()->first()->id, $booking->id),
-            'class' => 'delete' ) ) }}
-
     <div style="margin-bottom:10px;">
         {{ link_to_route(
             'booking.edit', 
@@ -41,6 +35,12 @@
             $parameters = array( 'id' => $booking->id, 'leadership_event_id' => $booking->leadership_event()->first()->id), 
             $attributes = array( 'class' => 'btn btn-primary')) }}
     </div>
+
+    {{ Form::open(
+        array(
+            'method' => 'DELETE', 
+            'route' => array('booking.destroy', $booking->leadership_event()->first()->id, $booking->id),
+            'class' => 'delete' ) ) }}
 
     <div style="margin-bottom:10px;">
         {{ Form::button(
@@ -52,6 +52,36 @@
     </div>
 
     {{ Form::close() }}
+
+    @if ($booking->is_registered())
+
+    {{ Form::open(
+        array(
+            'method' => 'PUT', 
+            'route' => array('booking.unregister', $booking->leadership_event()->first()->id, $booking->id),
+            'class' => '' ) ) }}
+
+    <div style="margin-bottom:10px;">
+        {{ Form::submit('Unregister this booking', array('class' => 'btn btn-info')) }} 
+    </div>
+
+    {{ Form::close() }}
+
+    @else
+
+    {{ Form::open(
+        array(
+            'method' => 'PUT', 
+            'route' => array('booking.register', $booking->leadership_event()->first()->id, $booking->id),
+            'class' => '' ) ) }}
+
+    <div style="margin-bottom:10px;">
+        {{ Form::submit('Register this booking', array('class' => 'btn btn-info')) }} 
+    </div>
+
+    {{ Form::close() }}
+
+    @endif
 
 </div>
 

@@ -40,7 +40,12 @@
 
                     @if ($booking->registration_date)
 
-                    <p>{{{ $booking->name() }}} has already registered.</p>
+                    <p>
+                        {{{ $booking->name() }}} has already registered. 
+                        {{ link_to_route('booking.show', 'View details', 
+                            $parameters = array('leadership_event_id' => $event->id, 'id' => $booking->id), 
+                            array('class' => '')) }}
+                    </p>
 
                     @else
 
