@@ -32,6 +32,14 @@ Route::group(array('before' => 'auth.basic'), function()
         Route::get ('registration',           array('as'=>'registration',        'uses'=>'RegistrationController@index'));
         Route::post('registration',           array('as'=>'registration.search', 'uses'=>'RegistrationController@search'));
         Route::post('register/{booking}',     array('as'=>'register',            'uses'=>'RegistrationController@register'));
+
+        Route::get ('activity',                array('as'=>'activity.index',  'uses'=>'ActivityController@index'));
+        Route::get ('activity/create',         array('as'=>'activity.create', 'uses'=>'ActivityController@create'));
+        Route::post('activity',                array('as'=>'activity.store',  'uses'=>'ActivityController@store'));
+        Route::get ('activity/show/{activity}', array('as'=>'activity.show',   'uses'=>'ActivityController@show'));
+        Route::get ('activity/edit/{activity}', array('as'=>'activity.edit',   'uses'=>'ActivityController@edit'));
+        Route::put ('activity/{activity}',      array('as'=>'activity.update', 'uses'=>'ActivityController@update'));
+        Route::delete('activity/{activity}',    array('as'=>'activity.destroy','uses'=>'ActivityController@destroy'));
     });
 
 });

@@ -28,6 +28,11 @@ class LeadershipEvent extends Eloquent
         return $this->hasMany('Booking');
     }
 
+    public function activities()
+    {
+        return $this->hasMany('Activity');
+    }
+
     public function name()
     {
         return $this->event_date->format('jS F Y');
