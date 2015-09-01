@@ -8,7 +8,7 @@ class RegistrationController extends BaseController {
     {
         $event = LeadershipEvent::find($leadership_event_id);
 
-        $this->layout->with('subtitle', $event->name);
+        $this->layout->with('subtitle', $event->name());
 
         $this->layout->content = 
             View::make('registration.index')
@@ -43,7 +43,7 @@ class RegistrationController extends BaseController {
         } 
         else
         {
-            $this->layout->with('subtitle', $event->name);
+            $this->layout->with('subtitle', $event->name());
 
             $this->layout->content = 
                 View::make('registration.index')
@@ -92,7 +92,7 @@ class RegistrationController extends BaseController {
                 $booking->role           = Input::get('role');
             });
 
-            $this->layout->with('subtitle', $event->name);
+            $this->layout->with('subtitle', $event->name());
             $this->layout->withErrors($validator);
 
             $this->layout->content = 

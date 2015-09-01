@@ -6,18 +6,20 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Event name</th>
-            <th>Start date</th>
-            <th>End date</th>
+            <th>Event date</th>
+            <th>Description</th>
+            <th>Bookings</th>
+            <th>Registrations</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
     @foreach ($events as $event)
         <tr>
-            <td>{{{ $event->name }}}</td>
-            <td>{{{ HTML::short_date($event->start_date) }}}</td>
-            <td>{{{ HTML::short_date($event->end_date) }}}</td>
+            <td>{{{ $event->name() }}}</td>
+            <td>{{ nl2br($event->description) }}</td>
+            <td>{{{ $event->expected() }}}</td>
+            <td>{{{ $event->registered() }}}</td>
             <td>
                 {{ link_to_route('event.show', 'View details', $parameters = array( 'id' => $event->id), array('class' => '')) }},
                 {{ link_to_route('booking.index', 'Manage bookings', $parameters = array( 'leadership_event_id' => $event->id), array('class' => '')) }},

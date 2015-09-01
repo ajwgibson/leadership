@@ -31,7 +31,7 @@
             <td>
                 {{ link_to_route('booking.show', 'View details', 
                         $parameters = array('leadership_event_id' => $booking->leadership_event()->first()->id, 'id' => $booking->id), 
-                        array('class' => '')) }},
+                        array('class' => '')) }}
             </td>
         </tr>
     @endforeach

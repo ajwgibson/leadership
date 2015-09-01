@@ -9,7 +9,7 @@ class EventController extends BaseController {
     {
         $this->layout->with('subtitle', 'event list');
 
-        $events = LeadershipEvent::orderBy('start_date')->get();
+        $events = LeadershipEvent::orderBy('event_date')->get();
 
         $this->layout->content = 
             View::make('events.index')
@@ -41,14 +41,9 @@ class EventController extends BaseController {
 
         if ($validator->passes())
         {
-            $event = new LeadershipEvent(Input::except('start_date', 'end_date'));
-
-            $event->start_date = Carbon::createFromFormat('d-m-Y', Input::get('start_date'));
-
-            if (Input::has('end_date')) {
-                $event->end_date = Carbon::createFromFormat('d-m-Y', Input::get('end_date'));
-            }
-
+            $event = new LeadershipEvent();
+            $event->event_date = Carbon::createFromFormat('d-m-Y', Input::get('event_date'));
+            $event->description = Input::get('description');
             $event->save();
 
             return Redirect::route('event.index');
@@ -95,17 +90,8 @@ class EventController extends BaseController {
         if ($validator->passes()) {
 
             $event = LeadershipEvent::findOrFail($id);
-
-            $event->update(Input::except('start_date', 'end_date'));
-
-            $event->start_date = Carbon::createFromFormat('d-m-Y', Input::get('start_date'));
-
-            if (Input::has('end_date')) {
-                $event->end_date = Carbon::createFromFormat('d-m-Y', Input::get('end_date'));
-            } else {
-                $event->end_date = null;
-            }
-
+            $event->event_date = Carbon::createFromFormat('d-m-Y', Input::get('event_date'));
+            $event->description = Input::get('description');
             $event->save();
 
             return Redirect::route('event.show', $id);

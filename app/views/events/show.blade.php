@@ -1,20 +1,11 @@
 
 <div class="col-sm-8">
     <dl class="dl-horizontal show">
-        <dt>Event name</dt>
-        <dd>{{{ $event->name }}}</dd>
+        <dt>Event date</dt>
+        <dd>{{{ $event->name() }}}</dd>
 
         <dt>Event description</dt>
         <dd>{{ nl2br($event->description) }}</dd>
-
-        <dt>Start date</dt>
-        <dd>{{{ HTML::long_date($event->start_date) }}}</dd>
-
-        <dt>End date</dt>
-        <dd>{{{ HTML::long_date($event->end_date) }}}</dd>
-
-        <dt>Notes</dt>
-        <dd>{{ nl2br($event->notes) }}</dd>
     </dl>
 </div>
 

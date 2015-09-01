@@ -83,6 +83,14 @@
 
     @endif
 
+    <div style="margin-bottom:10px;">
+        {{ link_to_route(
+            'booking.index', 
+            'Back to bookings', 
+            $parameters = array('leadership_event_id' => $booking->leadership_event()->first()->id), 
+            $attributes = array('class' => 'btn btn-default')) }}
+    </div>
+
 </div>
 
 
