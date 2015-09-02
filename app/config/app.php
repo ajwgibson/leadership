@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => $_ENV['LEADERSHIP_SECRET'],
+	'key' => getenv('LEADERSHIP_SECRET'),
 
 	/*
 	|--------------------------------------------------------------------------
