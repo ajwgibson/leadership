@@ -49,9 +49,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => $_ENV['DB_DATABASE'],
-			'username'  => $_ENV['DB_USERNAME'],
-			'password'  => $_ENV['DB_PASSWORD'],
+			'database'  => $_ENV['LEADERSHIP_DATABASE'],
+			'username'  => $_ENV['LEADERSHIP_USERNAME'],
+			'password'  => $_ENV['LEADERSHIP_PASSWORD'],
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
