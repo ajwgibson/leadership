@@ -29,4 +29,9 @@ class Activity extends Eloquent
         return $this->belongsTo('LeadershipEvent', 'leadership_event_id');
     }
 
+    public function bookings()
+    {
+        return $this->belongsToMany('Booking', 'signups');
+    }
+
 }

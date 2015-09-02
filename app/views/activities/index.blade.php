@@ -21,6 +21,9 @@
             <td>
                 {{ link_to_route('activity.show', 'View details', 
                         $parameters = array('leadership_event_id' => $activity->leadership_event()->first()->id, 'id' => $activity->id), 
+                        array('class' => '')) }},
+                {{ link_to_route('signup', 'Sign-up', 
+                        $parameters = array('leadership_event_id' => $activity->leadership_event()->first()->id, 'id' => $activity->id), 
                         array('class' => '')) }}
             </td>
         </tr>

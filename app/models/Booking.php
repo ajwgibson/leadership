@@ -49,4 +49,14 @@ class Booking extends Eloquent
     {
         return isset($this->registration_date);
     }
+
+    public function activities()
+    {
+        return $this->belongsToMany('Activity', 'signups');
+    }
+
+    public function isSignedUpForActivity($activity_id)
+    {
+        return false;
+    }
 }

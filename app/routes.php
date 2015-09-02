@@ -40,6 +40,13 @@ Route::group(array('before' => 'auth.basic'), function()
         Route::get ('activity/edit/{activity}', array('as'=>'activity.edit',   'uses'=>'ActivityController@edit'));
         Route::put ('activity/{activity}',      array('as'=>'activity.update', 'uses'=>'ActivityController@update'));
         Route::delete('activity/{activity}',    array('as'=>'activity.destroy','uses'=>'ActivityController@destroy'));
+
+        Route::group(array('prefix' => 'activity/{activity}'), function()
+        {
+            Route::get ('signup',           array('as'=>'signup',        'uses'=>'SignupController@index'));
+            Route::post('signup',           array('as'=>'signup.search', 'uses'=>'SignupController@search'));
+            Route::post('signup/{booking}', array('as'=>'signup.do',     'uses'=>'SignupController@signup'));
+        });
     });
 
 });
