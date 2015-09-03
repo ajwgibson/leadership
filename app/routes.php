@@ -13,7 +13,7 @@
 
 Route::group(array('before' => 'auth.basic'), function()
 {
-    Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
+    Route::get('/', array('as' => 'home', 'uses' => 'EventController@index'));
 
     Route::resource('event', 'EventController');
 

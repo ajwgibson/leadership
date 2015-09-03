@@ -17,20 +17,22 @@
             {{ Form::submit('Search', array ('class' => 'btn btn-default')) }} 
         </div>
         <p class="help-block">
-                <em>Type a first or last name, but not both. If you're not sure of the correct spelling try just part of the name.</em>
+            <em>Type a first or last name, but not both. If you're not sure of the correct spelling try just part of the name.</em>
         </p>
 
         {{ Form::close() }}
 
+        <hr>
+
         @if (isset($bookings))
 
-            <p style="margin-top: 20px;">The following {{ $bookings->count() }} bookings have matched the search criteria. Pick one to continue or search again.</p>
+            <p style="margin-top: 20px;">The following bookings have matched the search criteria. Pick one to continue or search again.</p>
 
             @include('_form_errors')
 
             @foreach ($bookings as $booking)
             
-            <div class="panel panel-primary panel-search-result">
+            <div class="panel panel-info panel-search-result">
 
                 <div class="panel-heading">
                     <h3 class="panel-title text-uppercase">{{{ $booking->name() }}}</h3>
@@ -66,7 +68,7 @@
                     
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-4">
-                            {{ Form::submit('Sign-up', array ('class' => 'btn btn-primary')) }} 
+                            {{ Form::submit('Sign-up', array ('class' => 'btn btn-success')) }} 
                         </div>
                     </div>
 
@@ -88,12 +90,10 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Counters</h3>
+                <span class="badge alert-info pull-right">{{ $activity->bookings()->count() }}</span>
+                <h3 class="panel-title">Signed up</h3>
             </div>
             <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">Signed up <span class="badge alert-info">{{ $activity->bookings()->count() }}</span></li>
-                </ul>
                 <ol class="list-group">
                     @foreach ($activity->bookings()->get() as $signup)
                     <li class="list-group-item">

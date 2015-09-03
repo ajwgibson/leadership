@@ -26,20 +26,20 @@
     </div>
 
     <div style="margin-bottom:10px;">
-        {{ link_to_route(
-        'booking.index', 
-        'Manage bookings', 
-        $parameters = array( 'leadership_event_id' => $event->id), 
-        array('class' => 'btn btn-default')) }}
-    </div>
-
-    <div style="margin-bottom:10px;">
         {{ Form::button(
             'Delete this event', 
             array(
                 'class' => 'btn btn-danger',
                 'data-toggle' => 'modal',
                 'data-target' => '#modal' )) }}
+    </div>
+
+    <div style="margin-bottom:10px;">
+        {{ link_to_route(
+            'event.index', 
+            'Back to events', 
+            $parameters = array(), 
+            $attributes = array('class' => 'btn btn-default')) }}
     </div>
 
     {{ Form::close() }}

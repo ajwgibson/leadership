@@ -4,7 +4,10 @@
 <h3>Bookings</h3>
 
 <div>
-    {{ link_to_route('booking.create', 'Add a new booking', $parameters = array( 'leadership_event_id' => $event->id), array('class' => 'btn btn-primary')) }}
+    {{ link_to_route('booking.create', 'Add a new booking', 
+            $parameters = array( 'leadership_event_id' => $event->id), array('class' => 'btn btn-primary')) }}
+    {{ link_to_route('event.index', 'Back to events', 
+            $parameters = array(), array('class' => 'btn btn-default')) }}
 </div>
 
 <table class="table table-striped table-bordered">

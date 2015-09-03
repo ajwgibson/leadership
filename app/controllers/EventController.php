@@ -7,7 +7,7 @@ class EventController extends BaseController {
 
     public function index()
     {
-        $this->layout->with('subtitle', 'event list');
+        $this->layout->with('subtitle', '');
 
         $events = LeadershipEvent::orderBy('event_date')->get();
 

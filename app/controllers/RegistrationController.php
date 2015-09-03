@@ -21,7 +21,7 @@ class RegistrationController extends BaseController {
         $name   = Input::get('name');
 
         if (empty($name)) {
-            return Redirect::route('registration')
+            return Redirect::route('registration', array($leadership_event_id))
                     ->with('message', 'You must provide a name');
         } 
 

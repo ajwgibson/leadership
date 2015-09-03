@@ -21,16 +21,18 @@
         </p>
 
         {{ Form::close() }}
+        
+        <hr>
 
         @if (isset($bookings))
 
-            <p style="margin-top: 20px;">The following {{ $bookings->count() }} bookings have matched the search criteria. Pick one to continue or search again.</p>
+            <p style="margin-top: 20px;">The following bookings have matched the search criteria. Pick one to continue or search again.</p>
 
             @include('_form_errors')
 
             @foreach ($bookings as $booking)
             
-            <div class="panel panel-primary panel-search-result">
+            <div class="panel panel-info panel-search-result">
 
                 <div class="panel-heading">
                     <h3 class="panel-title text-uppercase">{{{ $booking->name() }}}</h3>
@@ -105,7 +107,7 @@
                     
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-4">
-                            {{ Form::submit('Register', array ('class' => 'btn btn-primary')) }} 
+                            {{ Form::submit('Register', array ('class' => 'btn btn-success')) }} 
                         </div>
                     </div>
 
