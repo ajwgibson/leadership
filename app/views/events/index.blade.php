@@ -70,7 +70,7 @@
                             <div class="panel-body">
 
                                 <ul class="list-group">
-                                    @foreach ($event->activities()->get() as $activity)
+                                    @foreach ($event->activities()->orderBy('name')->get() as $activity)
                                     <li class="list-group-item">
                                         <span class="badge">{{ $activity->bookings()->count() }}</span>
                                         {{{ $activity->name }}}

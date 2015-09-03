@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach ($activity->bookings()->orderBy('bookings.last')->get() as $booking)
+    @foreach ($activity->bookings()->orderBy('bookings.last')->orderBy('bookings.first')->get() as $booking)
         <tr>
             <td>{{{ $booking->name() }}}</td>
             <td>{{{ $booking->email }}}<br/>

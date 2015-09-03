@@ -95,7 +95,7 @@
             </div>
             <div class="panel-body">
                 <ol class="list-group">
-                    @foreach ($activity->bookings()->get() as $signup)
+                    @foreach ($activity->bookings()->orderBy('bookings.last')->orderBy('bookings.first')->get() as $signup)
                     <li class="list-group-item">
                         {{ $signup->name() }} 
                         {{ link_to_route('signup.clear', 'x', 

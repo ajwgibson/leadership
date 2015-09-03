@@ -23,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach ($event->bookings->sortBy('first') as $booking)
+    @foreach ($event->bookings()->orderBy('last')->orderBy('first')->get() as $booking)
         <tr>
             <td>{{{ $booking->first }}} {{{ $booking->last }}}</td>
             <td>{{{ $booking->church }}}</td>
