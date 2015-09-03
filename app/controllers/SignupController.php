@@ -68,7 +68,18 @@ class SignupController extends BaseController {
 
         $booking->activities()->attach($activity_id);
 
-        return Redirect::route('signup', array($leadership_event_id, $activity_id));
+        return Redirect::route('signup', array($leadership_event_id, $activity_id))
+                    ->with('info', 'Sign-up complete!');
+    }
+
+    public function clear($leadership_event_id, $activity_id, $booking_id)
+    {
+        $booking = Booking::findOrFail($booking_id);
+
+        $booking->activities()->detach($activity_id);
+
+        return Redirect::route('signup', array($leadership_event_id, $activity_id))
+                    ->with('info', 'Sign-up cleared!');
     }
 
 }

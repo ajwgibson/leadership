@@ -11,6 +11,7 @@
     <thead>
         <tr>
             <th>Name</th>
+            <th>Signed up</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
@@ -18,6 +19,7 @@
     @foreach ($event->activities->sortBy('name') as $activity)
         <tr>
             <td>{{{ $activity->name }}}</td>
+            <td>{{{ $activity->bookings()->count() }}}</td>
             <td>
                 {{ link_to_route('activity.show', 'View details', 
                         $parameters = array('leadership_event_id' => $activity->leadership_event()->first()->id, 'id' => $activity->id), 

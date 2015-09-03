@@ -43,9 +43,10 @@ Route::group(array('before' => 'auth.basic'), function()
 
         Route::group(array('prefix' => 'activity/{activity}'), function()
         {
-            Route::get ('signup',           array('as'=>'signup',        'uses'=>'SignupController@index'));
-            Route::post('signup',           array('as'=>'signup.search', 'uses'=>'SignupController@search'));
-            Route::post('signup/{booking}', array('as'=>'signup.do',     'uses'=>'SignupController@signup'));
+            Route::get ('signup',             array('as'=>'signup',        'uses'=>'SignupController@index'));
+            Route::post('signup',             array('as'=>'signup.search', 'uses'=>'SignupController@search'));
+            Route::post('signup/{booking}',   array('as'=>'signup.do',     'uses'=>'SignupController@signup'));
+            Route::get('signup/clear/{booking}', array('as'=>'signup.clear',  'uses'=>'SignupController@clear'));
         });
     });
 

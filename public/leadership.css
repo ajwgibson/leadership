@@ -35,3 +35,8 @@ label.required:after {
 dl.show dd {
     margin-bottom: 20px;
 }
+
+.clear-danger {
+    color: #ff0000;
+    opacity: 1.0;
+}

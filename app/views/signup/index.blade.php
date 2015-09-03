@@ -4,7 +4,7 @@
 
 <div class="row">
 
-    <div class="col-sm-9">
+    <div class="col-sm-8">
 
         {{ Form::open(array('route' => array('signup.search', $event->id, $activity->id), 'class' => 'form-inline')) }}
 
@@ -84,7 +84,7 @@
 
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -94,9 +94,14 @@
                 <ul class="list-group">
                     <li class="list-group-item">Signed up <span class="badge alert-info">{{ $activity->bookings()->count() }}</span></li>
                 </ul>
-                <ol>
+                <ol class="list-group">
                     @foreach ($activity->bookings()->get() as $signup)
-                    <li class="">{{ $signup->name() }}</li>
+                    <li class="list-group-item">
+                        {{ $signup->name() }} 
+                        {{ link_to_route('signup.clear', 'x', 
+                                $parameters = array($event->id, $activity->id, $signup->id), 
+                                array('class' => 'close clear-danger')) }}
+                    </li>
                     @endforeach
                 </ol>
             </div>
@@ -105,3 +110,15 @@
     </div>
 
 </div>
+
+
+
+@section('extra_js')
+
+<script type="text/javascript">
+    
+    
+    
+</script>
+
+@endsection
