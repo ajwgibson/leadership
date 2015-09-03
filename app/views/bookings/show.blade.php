@@ -21,6 +21,9 @@
         <dt>Role</dt>
         <dd>{{ $booking->role }}</dd>
 
+        <dt>Notes</dt>
+        <dd>{{ nl2br($booking->notes) }}</dd>
+
         <dt>Registration date/time</dt>
         <dd>{{ HTML::long_date_time($booking->registration_date) }}</dd>
     </dl>

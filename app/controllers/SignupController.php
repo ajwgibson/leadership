@@ -64,6 +64,7 @@ class SignupController extends BaseController {
         $booking = Booking::findOrFail($booking_id);
         $booking->email           = Input::get('email');
         $booking->contact_number  = Input::get('contact_number');
+        $booking->notes           = Input::get('notes');
         $booking->save();
 
         $booking->activities()->attach($activity_id);

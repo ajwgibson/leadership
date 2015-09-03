@@ -72,6 +72,7 @@ class RegistrationController extends BaseController {
             $booking->contact_number  = Input::get('contact_number');
             $booking->church          = Input::get('church');
             $booking->role            = Input::get('role');
+            $booking->notes           = Input::get('notes');
             $booking->save();
 
             return Redirect::route('registration', array($leadership_event_id))
@@ -90,6 +91,7 @@ class RegistrationController extends BaseController {
                 $booking->contact_number = Input::get('contact_number');
                 $booking->church         = Input::get('church');
                 $booking->role           = Input::get('role');
+                $booking->notes          = Input::get('notes');
             });
 
             $this->layout->with('subtitle', $event->name());

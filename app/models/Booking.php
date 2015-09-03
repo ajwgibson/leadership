@@ -4,7 +4,7 @@ class Booking extends Eloquent
 {
     protected $softDelete = true; 
 
-    protected $fillable = array('first', 'last', 'church', 'role', 'email', 'contact_number');
+    protected $fillable = array('first', 'last', 'church', 'role', 'email', 'contact_number', 'notes');
 
     public static $rules = array(
         'first'          => 'required|max:100',

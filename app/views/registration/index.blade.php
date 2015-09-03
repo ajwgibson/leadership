@@ -95,6 +95,12 @@
                         </div>
                     </div>
                     
+                    <div class="form-group {{ $errors->has('notes') ? 'has-error' : '' }}">
+                        {{ Form::label('notes', 'Notes', array ('class' => 'col-sm-4 control-label')) }}
+                        <div class="col-sm-8">
+                            {{ Form::textarea('notes', $booking->notes, array ('class' => 'form-control', 'rows' => '3')) }}
+                        </div>
+                    </div>
                     
                     
                     <div class="form-group">

@@ -57,6 +57,15 @@
     </div>
 </div>
 
+<div class="form-group {{ $errors->has('notes') ? 'has-error' : '' }}">
+    {{ Form::label('notes', 'Notes', array ('class' => 'control-label')) }}
+    <div class="row">
+        <div class="col-sm-6">
+            {{ Form::textarea('notes', $booking->notes, array ('class' => 'form-control')) }}
+        </div>
+    </div>
+</div>
+
 <div class="form-group">
     {{ Form::submit($button, array ('class' => 'btn btn-primary')) }} 
 </div>
