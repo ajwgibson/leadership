@@ -33,31 +33,13 @@
                         $parameters = array('leadership_event_id' => $activity->leadership_event()->first()->id, 'id' => $activity->id), 
                         array('class' => '')) }}
 
-                @if ($activity->description)
-                    <p>{{ nl2br($activity->description) }}</p>
-                @endif
+                <p>{{ nl2br($activity->description) }}</p>
 
-                @if ($activity->bookings()->count() > 0)
-                <h4>Attendees</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email address</th>
-                            <th>Contact number</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($activity->bookings()->get() as $booking)
-                        <tr>
-                            <td>{{{ $booking->name() }}}</td>
-                            <td>{{{ $booking->email }}}</td>
-                            <td>{{{ $booking->contact_number }}}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                @endif
+                <p><strong><em>{{ $activity->bookings()->count() }} attendees</em></strong></p>
+
+                {{ link_to_route('signup.sheet', 'Printable sheet', 
+                        $parameters = array('leadership_event_id' => $activity->leadership_event()->first()->id, 'id' => $activity->id), 
+                        array('class' => 'btn btn-info')) }}
                 
             </div>
 

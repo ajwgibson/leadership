@@ -53,7 +53,7 @@
         <div class="container">
 
             <div class="page-header">
-                <img src="{{ asset('images/banner.png') }}" class="img-responsive" alt="CCV Leadership Events banner">
+                <img src="{{ asset('images/banner.png') }}" class="img-responsive hidden-print" alt="CCV Leadership Events banner">
                 <h1>CCV Leadership Events 
                     @if ($subtitle) <span class="subtitle"><small>&raquo; {{ $subtitle }}</small></span> @endif</h1>
             </div>

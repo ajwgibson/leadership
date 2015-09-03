@@ -73,6 +73,7 @@ class SignupController extends BaseController {
                     ->with('info', 'Sign-up complete!');
     }
 
+
     public function clear($leadership_event_id, $activity_id, $booking_id)
     {
         $booking = Booking::findOrFail($booking_id);
@@ -81,6 +82,20 @@ class SignupController extends BaseController {
 
         return Redirect::route('signup', array($leadership_event_id, $activity_id))
                     ->with('info', 'Sign-up cleared!');
+    }
+
+
+    public function sheet($leadership_event_id, $activity_id)
+    {
+        $event = LeadershipEvent::findOrFail($leadership_event_id);
+        $activity = Activity::findOrFail($activity_id);
+
+        $this->layout->with('subtitle', $event->name());
+
+        $this->layout->content = 
+            View::make('signup.sheet')
+                ->with('event',    $event)
+                ->with('activity', $activity);
     }
 
 }
