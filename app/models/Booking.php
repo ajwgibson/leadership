@@ -57,6 +57,6 @@ class Booking extends Eloquent
 
     public function isSignedUpForActivity($activity_id)
     {
-        return false;
+        return $this->activities()->where('activities.id', $activity_id)->count();
     }
 }
