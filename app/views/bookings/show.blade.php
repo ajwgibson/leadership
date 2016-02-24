@@ -31,6 +31,8 @@
 
 <div class="col-sm-4">
 
+@if (!($booking->leadership_event()->first()->closed))
+
     <div style="margin-bottom:10px;">
         {{ link_to_route(
             'booking.edit', 
@@ -85,6 +87,8 @@
     {{ Form::close() }}
 
     @endif
+
+@endif
 
     <div style="margin-bottom:10px;">
         {{ link_to_route(

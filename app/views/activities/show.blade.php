@@ -13,6 +13,8 @@
 
 <div class="col-sm-4">
 
+@if (!($activity->leadership_event()->first()->closed))
+
     <div style="margin-bottom:10px;">
         {{ link_to_route(
             'activity.edit', 
@@ -37,6 +39,8 @@
     </div>
 
     {{ Form::close() }}
+
+@endif
 
     <div style="margin-bottom:10px;">
         {{ link_to_route(

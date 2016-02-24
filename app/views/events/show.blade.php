@@ -6,16 +6,20 @@
 
         <dt>Event description</dt>
         <dd>{{ nl2br($event->description) }}</dd>
+
+        <dt></dt>
+        <dd>
+            @if ($event->closed)
+            <span class="bg-info"><em><strong>Note: this event is now closed.</strong></em></span>
+            @endif
+        </dd>
     </dl>
+    
 </div>
 
 <div class="col-sm-4">
 
-    {{ Form::open(
-        array(
-            'method' => 'DELETE', 
-            'route' => array('event.destroy', $event->id),
-            'class' => 'delete' ) ) }}
+    
 
     <div style="margin-bottom:10px;">
         {{ link_to_route(
@@ -24,6 +28,46 @@
             $parameters = array( 'id' => $event->id), 
             $attributes = array( 'class' => 'btn btn-primary')) }}
     </div>
+
+    @if ($event->closed)
+
+    {{ Form::open(
+        array(
+            'method' => 'PUT', 
+            'route' => array('event.open', $event->id),
+            'class' => '' ) ) }}
+
+    <div style="margin-bottom:10px;">
+        {{ Form::submit(
+            'Reopen this event', 
+            array('class' => 'btn btn-info')) }}
+    </div>
+
+    {{ Form::close() }}
+
+    @else
+
+    {{ Form::open(
+        array(
+            'method' => 'PUT', 
+            'route' => array('event.close', $event->id),
+            'class' => '' ) ) }}
+
+    <div style="margin-bottom:10px;">
+        {{ Form::submit(
+            'Close this event', 
+            array('class' => 'btn btn-info')) }}
+    </div>
+
+    {{ Form::close() }}
+
+    @endif
+
+    {{ Form::open(
+        array(
+            'method' => 'DELETE', 
+            'route' => array('event.destroy', $event->id),
+            'class' => 'delete' ) ) }}
 
     <div style="margin-bottom:10px;">
         {{ Form::button(
@@ -34,6 +78,8 @@
                 'data-target' => '#modal' )) }}
     </div>
 
+    {{ Form::close() }}
+
     <div style="margin-bottom:10px;">
         {{ link_to_route(
             'event.index', 
@@ -42,7 +88,6 @@
             $attributes = array('class' => 'btn btn-default')) }}
     </div>
 
-    {{ Form::close() }}
 
 </div>
 

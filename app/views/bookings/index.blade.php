@@ -4,8 +4,10 @@
 <h3>Bookings</h3>
 
 <div>
+    @if (!($event->closed))
     {{ link_to_route('booking.create', 'Add a new booking', 
             $parameters = array( 'leadership_event_id' => $event->id), array('class' => 'btn btn-primary')) }}
+    @endif
     {{ link_to_route('event.index', 'Back to events', 
             $parameters = array(), array('class' => 'btn btn-default')) }}
 </div>

@@ -9,11 +9,39 @@ class EventController extends BaseController {
     {
         $this->layout->with('subtitle', '');
 
-        $events = LeadershipEvent::orderBy('event_date')->get();
+        $filtered = false;
+        $include_closed = Session::get('events_filter_include_closed', '');
+
+        if ($include_closed) {
+            $filtered = true;
+            $events = LeadershipEvent::orderBy('event_date', 'descending')->get();
+        } else {
+            $events = LeadershipEvent::where('closed', false)->orderBy('event_date', 'descending')->get();            
+        }
 
         $this->layout->content = 
             View::make('events.index')
-                ->with('events', $events);
+                ->with('events', $events)
+                ->with('filtered', $filtered)
+                ->with('filter_include_closed', $include_closed);
+    }
+
+
+    public function filter()
+    {
+        $filter_include_closed = Input::get('filter_include_closed');
+        
+        Session::put('events_filter_include_closed', $filter_include_closed);
+
+        return Redirect::route('event.index');
+    }
+
+    
+    public function resetFilter()
+    {
+        if (Session::has('events_filter_include_closed')) Session::forget('events_filter_include_closed');
+
+        return Redirect::route('event.index');
     }
 
 
@@ -108,6 +136,24 @@ class EventController extends BaseController {
         LeadershipEvent::destroy($id);
 
         return Redirect::route('event.index');
+    }
+
+    public function close($id)
+    {
+        $event = LeadershipEvent::findOrFail($id);
+        $event->closed = true;
+        $event->save();
+        return Redirect::route('event.show', $id)
+                ->with('info', 'This event has been closed');
+    }
+
+    public function open($id)
+    {
+        $event = LeadershipEvent::findOrFail($id);
+        $event->closed = false;
+        $event->save();
+        return Redirect::route('event.show', $id)
+                ->with('info', 'This event has been reopened');
     }
 
 }

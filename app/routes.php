@@ -16,6 +16,10 @@ Route::group(array('before' => 'auth.basic'), function()
     Route::get('/', array('as' => 'home', 'uses' => 'EventController@index'));
 
     Route::resource('event', 'EventController');
+    Route::put('event/close/{event}', array('as'=>'event.close',       'uses'=>'EventController@close'));
+    Route::put('event/open/{event}',  array('as'=>'event.open',        'uses'=>'EventController@open'));
+    Route::post('event/filter',       array('as'=>'event.filter',      'uses'=>'EventController@filter'));
+    Route::get('event/filter/reset',  array('as'=>'event.resetfilter', 'uses'=>'EventController@resetFilter'));
 
     Route::group(array('prefix' => 'event/{leadership_event_id}'), function()
     {
